@@ -46,7 +46,7 @@
           const [isSent, setIsSent] = useState(false);
 
           // 请在此填入您自己申请的 Gemini API Key (保留双引号)
-          const apiKey = ""; 
+          const apiKey = "AIzaSyCr2IAccXyot1FnRvxNZLxUx3Ail1diaS0"; 
 
           // 自动滚动到聊天底部
           useEffect(() => {
@@ -55,7 +55,7 @@
             }
           }, [chatMessages, isChatTyping]);
 
-          // 通用的 Gemini API 调用函数
+          // 通用的 Gemini API 调用函数 (含指数退避机制)
           const callGemini = async (prompt, sysInstruct) => {
             const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
             const payload = {
@@ -209,7 +209,7 @@
                   </div>
                   <div className="md:w-1/2 flex justify-center relative">
                     <div className="absolute inset-0 bg-blue-600/10 blur-3xl rounded-full w-80 h-80 m-auto"></div>
-                    <!-- 👇 注意这里加了 object-top 👇 -->
+                    <!-- 头像代码添加了 object-top，确保不会裁掉头顶 -->
                     <img 
                       src="4f69c57d6dc50e8ffacd9d4ab1568a15.jpg" 
                       alt="欧阳轩" 
